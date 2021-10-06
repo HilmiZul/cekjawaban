@@ -34,7 +34,7 @@
               <div class="form-group">
                 <input type="text" class="form-control form-control-lg letter-space" v-model="kunci" pattern="[a-z]+" maxlength="20" placeholder="contoh: adcbcedeecaedaadcaba" :disabled="dikunci" />
               </div>
-              <span v-if="kunci.length < 1">Silakan isi kunci jawaban!</span>
+              <span v-if="kunci.length < 1"><em>Silakan isi kunci jawaban!</em></span>
               <span v-else-if="kunci.length > 19">
                 <button v-if="!dikunci" class="btn btn-dark mr-2" v-on:click="this.kunciJawaban">Kunci!</button>
                 <button v-else class="btn btn-danger mr-2" v-on:click="this.kunciJawaban">Ubah!</button>
