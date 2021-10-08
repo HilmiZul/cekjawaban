@@ -1,9 +1,9 @@
 <template>
   <section class="konten">
-    <div class="container-fluid pb-3">
+    <div class="container pb-3">
       <div class="row">
-        <div class="col-md-4">
-          <table class="table table-bordered">
+        <div class="col-md-6">
+          <table class="table table-bordered bg-white">
             <tbody>
               <tr>
                 <th>Jumlah Soal</th>
@@ -21,7 +21,7 @@
       </div>
 
       <div class="row">
-        <div class="col-md-4">
+        <div class="col-md-6">
           <div class="card mb-5">
             <div class="card-header bg-blue">
               <h5>
@@ -46,7 +46,7 @@
           </div>
         </div>
         
-        <div class="col-md-4">
+        <div class="col-md-6">
           <div class="card mb-5">
             <div class="card-header bg-yellow">
               <h5><i class="fa fa-users"></i> Jawaban Siswa</h5>
@@ -57,7 +57,7 @@
                   <input type="text" class="form-control form-control-lg letter-space" v-model="jawaban" maxlength="20" placeholder="contoh: abcde" :disabled="kunci.length < 20" />
                 </div>
                 <span v-if="jawaban.length > 19">
-                  <button v-if="kunci.length > 19" class="btn btn-dark mr-2" :disabled="jawaban.length < 20">Cek Jawban!</button>
+                  <button v-if="kunci.length > 19" @click="show=true" class="btn btn-dark mr-2" :disabled="jawaban.length < 20">Cek Jawban!</button>
                   <button v-if="kunci.length > 19" class="btn btn-outline-danger" v-on:click="this.resetSemua" :disabled="jawaban < 20">Reset!</button>
                 </span>
                 <span v-else-if="jawaban.length > 0"><em>{{ jawaban.length }} dari {{ kunci.length }} jawaban!</em></span>
@@ -70,27 +70,48 @@
             </div>
           </div>
         </div>
-        <div class="col-md-4">
+        <!-- <div class="col-md-4">
           <div class="card mb-3">
             <div class="card-header bg-green">
               <h5><i class="fa fa-print"></i> Hasil</h5>
             </div>
             <div class="card-body">
-              <h3>✅ {{ hasil.benar }}</h3>
-              <h3>❌ {{ hasil.salah }}</h3>
-              <h3>Niliai: {{ hasil.nilai }}</h3>
+              <h3 class="text-muted"><i class="fa fa-check-circle"></i> Benar: {{ hasil.benar }}</h3>
+              <h3 class="text-muted"><i class="fa fa-times-circle"></i> Salah: {{ hasil.salah }}</h3>
+              <h3><i class="fa fa-edit"></i> Niliai: {{ hasil.nilai }}</h3>
             </div>
           </div>
-        </div>
+        </div> -->
       </div>
     </div>
+
+    <stack-modal
+      :show="show"
+      :title="modalTitle"
+      transition="translate-fade"
+      @close="show=false"
+      :modal-class="{ [modalClass]: true }"
+      :saveButton="{ visible: false }"
+      :cancelButton="{ title: 'Tutup', btnClass: { 'btn btn-outline-danger': true } }">
+      <h5 class="text-muted"><i class="fa fa-check-circle"></i> Benar: {{ hasil.benar }}</h5>
+      <h5 class="text-muted"><i class="fa fa-times-circle"></i> Salah: {{ hasil.salah }}</h5>
+      <h5><i class="fa fa-edit"></i> Niliai: {{ hasil.nilai }}</h5>
+    </stack-modal>
   </section>
 </template>
 
 <script>
+import StackModal from '@innologica/vue-stackable-modal'
 export default {
+  components: {
+    StackModal
+  },
+
   data() {
     return {
+      show: false,
+      modalClass: 'modal-border-0',
+      modalTitle: `Hasil`,
       jawaban: [],
       kunci: [],
       hasil: {
@@ -108,9 +129,10 @@ export default {
 
   methods: {
     cekJawaban() {
-      this.resetBeforeCheck();
+      this.resetBeforeCheck(); // kosongkan `hasil`
+      // cari jawaban yang sama dengan kunci jawaban
       for (let i = 0; i < this.kunci.length; i++) {
-        if (this.jawaban[i] === this.kunci[i]) {
+        if (this.jawaban[i].toUpperCase() === this.kunci[i].toUpperCase()) {
           this.hasil.benar = this.hasil.benar + 1;
         } else {
           this.hasil.salah = this.hasil.salah + 1;
@@ -141,6 +163,7 @@ export default {
 </script>
 
 <style lang="css" scoped>
+@import "~@innologica/vue-stackable-modal/src/assets/transitions/translate-fade.scss";
 .konten {
   width: 100%;
   height: 100%;

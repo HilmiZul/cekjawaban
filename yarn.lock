@@ -935,6 +935,14 @@
   dependencies:
     "@hapi/hoek" "^8.3.0"
 
+"@innologica/vue-stackable-modal@^0.1.10":
+  version "0.1.10"
+  resolved "https://registry.yarnpkg.com/@innologica/vue-stackable-modal/-/vue-stackable-modal-0.1.10.tgz#ab0855bdc39faed2c7f350cc4faf77ca72e6454c"
+  integrity sha512-xhSTHhlX7EFrHf1hMigTUqZXri+qpH2TeBRjR2kEGpAV3UQYs8Z3bLeltFz+PHC5CKkJubqMdI2mOUZHH89jsA==
+  dependencies:
+    core-js "^2.6.5"
+    vue "^2.6.10"
+
 "@intervolga/optimize-cssnano-plugin@^1.0.5":
   version "1.0.6"
   resolved "https://registry.nlark.com/@intervolga/optimize-cssnano-plugin/download/@intervolga/optimize-cssnano-plugin-1.0.6.tgz#be7c7846128b88f6a9b1d1261a0ad06eb5c0fdf8"
@@ -2684,6 +2692,11 @@ core-js-compat@^3.16.0, core-js-compat@^3.16.2, core-js-compat@^3.6.5:
   dependencies:
     browserslist "^4.17.1"
     semver "7.0.0"
+
+core-js@^2.6.5:
+  version "2.6.12"
+  resolved "https://registry.yarnpkg.com/core-js/-/core-js-2.6.12.tgz#d9333dfa7b065e347cc5682219d6f690859cc2ec"
+  integrity sha512-Kb2wC0fvsWfQrgk8HU5lW6U/Lcs8+9aaYcy4ZFc6DDlo4nZ7n70dEgE5rtR0oG6ufKDUnrwfWL1mXR5ljDatrQ==
 
 core-js@^3.6.5:
   version "3.18.1"
@@ -8197,7 +8210,7 @@ vue-template-es2015-compiler@^1.9.0:
   resolved "https://registry.nlark.com/vue-template-es2015-compiler/download/vue-template-es2015-compiler-1.9.1.tgz#1ee3bc9a16ecbf5118be334bb15f9c46f82f5825"
   integrity sha1-HuO8mhbsv1EYvjNLsV+cRvgvWCU=
 
-vue@^2.6.11:
+vue@^2.6.10, vue@^2.6.11:
   version "2.6.14"
   resolved "https://registry.npmmirror.com/vue/download/vue-2.6.14.tgz#e51aa5250250d569a3fbad3a8a5a687d6036e235"
   integrity sha1-5RqlJQJQ1Wmj+606ilpofWA24jU=

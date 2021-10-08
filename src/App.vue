@@ -1,15 +1,25 @@
 <template>
   <div id="app">
+    <div class="ilustrasi">
+      <img src="~@/assets/img/check-box.svg" alt="ilustrasi" class="img-ilustrasi">
+    </div>
     <section class="title">
       <div class="container">
         <div class="row">
           <div class="col-md-4 offset-md-4">
-            <div class="inner-title pt-4 pb-3 mb-3">🧐 {{ title }} 🧐</div>
+            <div class="inner-title pt-4 pb-3 mb-3">
+              {{ title.toUpperCase() }}
+            </div>
           </div>
         </div>
       </div>
     </section>
+
     <router-view></router-view>
+    
+    <footer class="text-center text-muted">
+      <div class="footer-text">&copy; 2021 <a href="https://zulhilmi.id" target="_blank" >zulhilmi.id</a>.</div>
+    </footer>
   </div>
 </template>
 
@@ -42,8 +52,8 @@ html,
 body {
   width: 100%;
   height: 100%;
-  margin: 0;
-  padding: 0;
+  /* margin: 0;
+  padding: 0; */
 }
 #app {
   width: 100%;
@@ -67,7 +77,7 @@ body {
   width: 60px;
   height: 3px;
   background: #2c3e50;
-  bottom: 0;
+  bottom: 10%;
   left: 42%;
   position: absolute;
 }
@@ -80,5 +90,26 @@ body {
 }
 .prototype {
   font-family: 'Prototype';
+}
+
+.ilustrasi {
+  position: relative;
+  display: block;
+}
+.ilustrasi .img-ilustrasi {
+  position: absolute;
+  width: 20vw;
+  right: 30px;
+  top: 30px;
+}
+footer {
+  background-color: #a2d9ff;
+  padding-bottom: 30px;
+}
+footer a {
+  color: inherit
+}
+footer a:hover {
+  color: inherit;
 }
 </style>
