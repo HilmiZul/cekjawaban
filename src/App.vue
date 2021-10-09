@@ -1,13 +1,13 @@
 <template>
   <div id="app">
     <div class="ilustrasi">
-      <img src="~@/assets/img/check-box.svg" alt="ilustrasi" class="img-ilustrasi">
+      <img src="~@/assets/img/check-box.svg" alt="ilustrasi" class="img-ilustrasi" data-aos="fade" data-aos-duration="2000">
     </div>
     <section class="title">
       <div class="container">
         <div class="row">
           <div class="col-md-4 offset-md-4">
-            <div class="inner-title pt-4 pb-3 mb-3">
+            <div class="inner-title pt-4 pb-3 mb-3" data-aos="fade-down">
               {{ title.toUpperCase() }}
             </div>
           </div>

@@ -3,7 +3,7 @@
     <div class="container pb-3">
       <div class="row">
         <div class="col-md-6">
-          <table class="table table-bordered bg-white">
+          <table class="table table-bordered bg-white" data-aos="fade-up" data-aos-duration="700">
             <tbody>
               <tr>
                 <th>Jumlah Soal</th>
@@ -22,7 +22,7 @@
 
       <div class="row">
         <div class="col-md-6">
-          <div class="card mb-5">
+          <div class="card mb-3" data-aos="fade-up" data-aos-duration="900">
             <div class="card-header bg-blue">
               <h5>
                 <i v-if="dikunci" class="fa fa-lock"></i>
@@ -47,7 +47,7 @@
         </div>
         
         <div class="col-md-6">
-          <div class="card mb-5">
+          <div class="card mb-5" data-aos="fade-up" data-aos-duration="950">
             <div class="card-header bg-yellow">
               <h5><i class="fa fa-users"></i> Jawaban Siswa</h5>
             </div>
