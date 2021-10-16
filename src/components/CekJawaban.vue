@@ -95,7 +95,7 @@
       :cancelButton="{ title: 'Tutup', btnClass: { 'btn btn-outline-danger': true } }">
       <h5 class="text-muted"><i class="fa fa-check-circle"></i> Benar: {{ hasil.benar }}</h5>
       <h5 class="text-muted"><i class="fa fa-times-circle"></i> Salah: {{ hasil.salah }}</h5>
-      <h5><i class="fa fa-edit"></i> Niliai: {{ hasil.nilai }}</h5>
+      <h5><i class="fa fa-edit"></i> Nilai: {{ hasil.nilai }}</h5>
     </stack-modal>
   </section>
 </template>
