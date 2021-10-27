@@ -20,7 +20,7 @@
         </div>
       </div>
 
-      <div class="row">
+      <div class="row" v-if="pengaturan.skorSoal > 0">
         <div class="col-md-6">
           <div class="card mb-3" data-aos="fade-up" data-aos-duration="900">
             <div class="card-header bg-blue">
@@ -41,13 +41,13 @@
                 <em v-if="dikunci">Selesai</em>
                 <!-- <em v-if="!dikunci">Selesai</em> -->
               </span>
-              <span v-else><em>{{ kunci.length }} dari {{ pengaturan.jumlahSoal }} soal</em></span>
+              <span v-else><em>{{ kunci.length }} dari {{ pengaturan.jumlahSoal }} jawaban</em></span>
             </div>
           </div>
         </div>
         
         <div class="col-md-6">
-          <div class="card mb-5" data-aos="fade-up" data-aos-duration="950">
+          <div class="card mb-3" data-aos="fade-up" data-aos-duration="950">
             <div class="card-header bg-yellow">
               <h5><i class="fa fa-users"></i> Jawaban Siswa</h5>
             </div>
@@ -57,7 +57,8 @@
                   <input type="text" class="form-control form-control-lg letter-space" v-model="jawaban" maxlength="20" placeholder="contoh: abcde" :disabled="kunci.length < 20" />
                 </div>
                 <span v-if="jawaban.length > 19">
-                  <button v-if="kunci.length > 19" @click="show=true" class="btn btn-dark mr-2" :disabled="jawaban.length < 20">Cek Jawban!</button>
+                  <!-- <button v-if="kunci.length > 19" @click="show=true" class="btn btn-dark mr-2" :disabled="jawaban.length < 20">Cek Jawban!</button> -->
+                  <span v-if="jawaban.length > 19"> Selesai ✅</span>
                   <button v-if="kunci.length > 19" class="btn btn-outline-danger" v-on:click="this.resetSemua" :disabled="jawaban < 20">Reset!</button>
                 </span>
                 <span v-else-if="jawaban.length > 0"><em>{{ jawaban.length }} dari {{ kunci.length }} jawaban!</em></span>
@@ -83,8 +84,21 @@
           </div>
         </div> -->
       </div>
+      <div class="row" v-if="pengaturan.skorSoal > 0">
+        <div class="col-md-6">
+          <div class="card" data-aos="fade-up" data-aos-duration="1000">
+            <div class="card-header bg-green">
+              <h5><i class="fa fa-print"></i> Hasil</h5>
+            </div>
+            <div class="card-body">
+              <h5 class="text-muted"><i class="fa fa-check-circle"></i> Benar: {{ hasil.benar }}</h5>
+              <h5 class="text-muted"><i class="fa fa-times-circle"></i> Salah: {{ hasil.salah }}</h5>
+              <h5><i class="fa fa-edit"></i> Nilai: {{ hasil.nilai }}</h5>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-
     <stack-modal
       :show="show"
       :title="modalTitle"
@@ -125,6 +139,21 @@ export default {
       },
       dikunci: false,
     };
+  },
+
+  watch: {
+    jawaban() {
+      this.resetBeforeCheck(); // kosongkan `hasil`
+      for (let i = 0; i < this.jawaban.length; i++) {
+        if (this.jawaban[i].toUpperCase() === this.kunci[i].toUpperCase()) {
+          this.hasil.benar = this.hasil.benar + 1;
+        } else {
+          this.hasil.salah = this.hasil.salah + 1;
+        }
+      }
+      // hitung nilai = jawaban benar x skor per soal
+      this.hasil.nilai = this.hasil.benar * this.pengaturan.skorSoal
+    }
   },
 
   methods: {
