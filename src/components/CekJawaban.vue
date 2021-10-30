@@ -58,8 +58,8 @@
                 </div>
                 <span v-if="jawaban.length > 19">
                   <!-- <button v-if="kunci.length > 19" @click="show=true" class="btn btn-dark mr-2" :disabled="jawaban.length < 20">Cek Jawban!</button> -->
-                  <span v-if="jawaban.length > 19"> Selesai ✅</span>
                   <button v-if="kunci.length > 19" class="btn btn-outline-danger" v-on:click="this.resetSemua" :disabled="jawaban < 20">Reset!</button>
+                  <span v-if="jawaban.length > 19"> Selesai ✅</span>
                 </span>
                 <span v-else-if="jawaban.length > 0"><em>{{ jawaban.length }} dari {{ kunci.length }} jawaban!</em></span>
                 <span v-if="kunci.length > 19">
