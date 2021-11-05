@@ -1,5 +1,7 @@
 # cekjawaban
 
+👀 Watch Tutorial [HERE](https://www.youtube.com/watch?v=XBi9Vl33PMI)! 🚀
+
 ## Project setup
 ```
 yarn install
