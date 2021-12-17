@@ -32,10 +32,10 @@
             </div>
             <div class="card-body">
               <div class="form-group">
-                <input type="text" class="form-control form-control-lg letter-space" v-model="kunci" pattern="[a-z]+" maxlength="20" placeholder="contoh: adcbcedeecaedaadcaba" :disabled="dikunci" />
+                <input type="text" class="form-control form-control-lg letter-space" v-model="kunci" pattern="[a-z]+" maxlength="40" placeholder="contoh: adcbcedeecaedaadcaba" :disabled="dikunci" />
               </div>
               <span v-if="kunci.length < 1"><em>Silakan isi kunci jawaban!</em></span>
-              <span v-else-if="kunci.length > 19">
+              <span v-else-if="kunci.length > 39">
                 <button v-if="!dikunci" class="btn btn-dark mr-2" v-on:click="this.kunciJawaban">Kunci!</button>
                 <button v-else class="btn btn-danger mr-2" v-on:click="this.kunciJawaban">Ubah!</button>
                 <em v-if="dikunci">Selesai</em>
@@ -54,15 +54,15 @@
             <div class="card-body">
               <form @submit.prevent="cekJawaban">
                 <div class="form-group">
-                  <input type="text" class="form-control form-control-lg letter-space" v-model="jawaban" maxlength="20" placeholder="contoh: abcde" :disabled="kunci.length < 20" />
+                  <input type="text" class="form-control form-control-lg letter-space" v-model="jawaban" maxlength="40" placeholder="contoh: abcde" :disabled="kunci.length < 40" />
                 </div>
-                <span v-if="jawaban.length > 19">
+                <span v-if="jawaban.length > 39">
                   <!-- <button v-if="kunci.length > 19" @click="show=true" class="btn btn-dark mr-2" :disabled="jawaban.length < 20">Cek Jawban!</button> -->
-                  <button v-if="kunci.length > 19" class="btn btn-outline-danger" v-on:click="this.resetSemua" :disabled="jawaban < 20">Reset!</button>
-                  <span v-if="jawaban.length > 19"> Selesai ✅</span>
+                  <button v-if="kunci.length > 39" class="btn btn-outline-danger" v-on:click="this.resetSemua" :disabled="jawaban < 40">Reset!</button>
+                  <span v-if="jawaban.length > 39"> Selesai ✅</span>
                 </span>
                 <span v-else-if="jawaban.length > 0"><em>{{ jawaban.length }} dari {{ kunci.length }} jawaban!</em></span>
-                <span v-if="kunci.length > 19">
+                <span v-if="kunci.length > 39">
                   <span v-if="jawaban.length < 1">
                     <em>Silakan isi jawaban dari siswa!</em>
                   </span>
@@ -134,7 +134,7 @@ export default {
         nilai: 0
       },
       pengaturan: {
-        jumlahSoal: 20,
+        jumlahSoal: 40,
         skorSoal: 0
       },
       dikunci: false,
