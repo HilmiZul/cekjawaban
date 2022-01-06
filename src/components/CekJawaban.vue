@@ -54,7 +54,7 @@
             <div class="card-body">
               <form @submit.prevent="cekJawaban">
                 <div class="form-group">
-                  <input type="text" class="form-control form-control-lg letter-space" v-model="jawaban" maxlength="40" placeholder="contoh: abcde" :disabled="kunci.length < 40" />
+                  <input type="text" class="form-control form-control-lg letter-space" ref="jawaban" v-model="jawaban" maxlength="40" placeholder="contoh: abcde" :disabled="kunci.length < 40" />
                 </div>
                 <span v-if="jawaban.length > 39">
                   <!-- <button v-if="kunci.length > 19" @click="show=true" class="btn btn-dark mr-2" :disabled="jawaban.length < 20">Cek Jawban!</button> -->
@@ -179,13 +179,11 @@ export default {
       this.hasil.salah = 0;
       this.hasil.nilai = 0;
       this.jawaban = [];
+      this.$refs.jawaban.focus()
     },
     kunciJawaban() {
-      if (this.dikunci) {
-        this.dikunci = false;
-      } else {
-        this.dikunci = true;
-      }
+      if (this.dikunci) this.dikunci = false;
+      else this.dikunci = true;
     },
   },
 };
